@@ -13,7 +13,7 @@ st.set_page_config(layout="wide")
 
 st.write("""
 <div style='text-align:center'>
-    <h1 style='color:#009999;'>Industrial Copper Modeling Application</h1>
+    <h1 style='color:#009933;'>Industrial Copper Modeling Application</h1>
 </div>
 """, unsafe_allow_html=True)
 
@@ -44,7 +44,7 @@ with tab1:
             product_ref = st.selectbox("Product Reference", product, key=5)
         with col3:
             st.write(
-                f'<h5 style="color:rgb(0, 153, 153,0.4);">NOTE: Min & Max given for reference, you can enter any value</h5>',
+                f'<h5 style="color:rgb(0, 153, 153,0.5);">NOTE: Min & Max given for reference, you can enter any value</h5>',
                 unsafe_allow_html=True)
             quantity_tons = st.text_input("Enter Quantity Tons (Min:611728 & Max:1722207579)")
             thickness = st.text_input("Enter thickness (Min:0.18 & Max:400)")
@@ -54,7 +54,7 @@ with tab1:
             st.markdown("""
                     <style>
                     div.stButton > button:first-child {
-                        background-color: #009999;
+                        background-color: #009933;
                         color: white;
                         width: 100%;
                     }
@@ -79,15 +79,15 @@ with tab1:
     if submit_button and flag == 0:
         import pickle
 
-        with open(r"source/model.pkl", 'rb') as file:
+        with open(r"C:/Users/rameshr/PycharmProjects/Copper Project/model.pkl", 'rb') as file:
             loaded_model = pickle.load(file)
-        with open(r'source/scaler.pkl', 'rb') as f:
+        with open(r'C:/Users/rameshr/PycharmProjects/Copper Project/scaler.pkl', 'rb') as f:
             scaler_loaded = pickle.load(f)
 
-        with open(r"source/t.pkl", 'rb') as f:
+        with open(r"C:/Users/rameshr/PycharmProjects/Copper Project/t.pkl", 'rb') as f:
             t_loaded = pickle.load(f)
 
-        with open(r"source/s.pkl", 'rb') as f:
+        with open(r"C:/Users/rameshr/PycharmProjects/Copper Project/s.pkl", 'rb') as f:
             s_loaded = pickle.load(f)
 
         new_sample = np.array([[np.log(float(quantity_tons)), application, np.log(float(thickness)), float(width),
@@ -135,13 +135,13 @@ with tab2:
     if csubmit_button and cflag == 0:
         import pickle
 
-        with open(r"source/cmodel.pkl", 'rb') as file:
+        with open(r"C:/Users/rameshr/PycharmProjects/Copper Project/cmodel.pkl", 'rb') as file:
             cloaded_model = pickle.load(file)
 
-        with open(r'source/cscaler.pkl', 'rb') as f:
+        with open(r'C:/Users/rameshr/PycharmProjects/Copper Project/cscaler.pkl', 'rb') as f:
             cscaler_loaded = pickle.load(f)
 
-        with open(r"source/ct.pkl", 'rb') as f:
+        with open(r"C:/Users/rameshr/PycharmProjects/Copper Project/ct.pkl", 'rb') as f:
             ct_loaded = pickle.load(f)
 
         # Predict the status for a new sample
